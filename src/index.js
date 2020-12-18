@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 
 class Square extends React.Component {
   render() {
@@ -63,10 +62,10 @@ class Board extends React.Component {
     } 
     else {
       if(this.state.xIsNext) {
-        status = 'Next player: Player 1';
+        status = 'Current player: Player 1';
       }
       else {
-        status = 'Next player: Player 2';
+        status = 'Current player: Player 2';
       }
     }
     const finish = 'Finish turn and go to next player';
@@ -102,20 +101,30 @@ class Board extends React.Component {
   }
 }
 
+class gameInformation extends React.Component {
+  render() {
+    const desc = "Nim is a game where two players take turns removing objects from the board. Each player must remove at least one object from the board when it is their turn. The loser is the one who removes the last object from the board."
+    return (
+      <div className = "desc">
+        {desc}
+      </div>
+    );
+  }
+}
+
 class Game extends React.Component {
   render() {
+    const desc = `Take turns removing objects from the board.
+    Each player must remove at least one object from the board when it is their turn. 
+    The loser is the one who removes the last object from the board.`
     return ( 
       <div className = "game" >
-        <a className = "titleheader"> Game of Nim </a> 
+        <a className = "titleheader"> Game of Nim </a>
+        <div className = "desc" >
+          {desc}
+        </div>  
         <div className = "game-board" >
           <Board />
-        </div> 
-        <div className = "game-info" >
-          <div > 
-          {/* status */ } 
-          </div> 
-          <ol> {/* TODO */ } 
-          </ol> 
         </div> 
       </div>
     );
